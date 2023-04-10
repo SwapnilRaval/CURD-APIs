@@ -118,7 +118,7 @@ exports.loginUser = async (req, res) => {
             },
             process.env.JWT_TOKEN,
             {
-              expiresIn: "1D",
+              expiresIn: "5D",
             }
           )
           await res.status(200).send({
@@ -174,10 +174,7 @@ exports.forgetPassword = async (req, res) => {
     const oldUser = await User.findOne({
       email: email,
     }).lean();
-    console.log(oldUser);
-    // const encryptedPassword = await bcrypt.hash(password, 10);
     const encryptedNewPassword = await bcrypt.hash(newPasswoprd, 10);
-    console.log("passwords", oldUser.password, encryptedNewPassword);
     if (email && oldUser.email && bcrypt.compare(password, oldUser.password)) {
       User.findByIdAndUpdate(
         oldUser._id,

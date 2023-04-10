@@ -34,8 +34,8 @@ var httpServer = http.createServer(
   });
 
 // Listening to http Server
-httpServer.listen(process.env.PORT, () => {
-  console.log(`Running on ${process.env.PORT}`);
+httpServer.listen(process.env.API_PORT, () => {
+  console.log(`Running on ${process.env.API_PORT}`);
 });
 app.use(cors());
 app.use(bodyParser.json());
@@ -57,6 +57,5 @@ db.mongoose
   });
 
 require("./routes")(app);
-
 const PORT = 5000;
 app.listen(PORT, () => console.log(`Running on ${PORT}`));

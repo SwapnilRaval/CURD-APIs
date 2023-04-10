@@ -7,6 +7,7 @@ exports.get_data = (req, res) => {
 };
 
 exports.set_empdata = (req, res) => {
+  console.log("req body",req.body);
   const { fname, lname, email, phoneno, companyname } = req.body;
 
   const emp_details = new Emp({
